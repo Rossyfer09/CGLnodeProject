@@ -18,10 +18,10 @@
 //changed the code to avoid error (throw new MongooseError('Mongoose.prototype.connect() no longer accepts a callback');)
 
 const mongoose = require('mongoose');
-require('./expense.model');
+require('./dog.model');
 
 mongoose
-  .connect('mongodb+srv://newuser:newuser123@cluster0.nj8a55s.mongodb.net/MyExpenseTracker', {
+  .connect('mongodb+srv://user123:user123@cluster0.nj8a55s.mongodb.net/DogsData', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
