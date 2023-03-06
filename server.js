@@ -1,6 +1,6 @@
 require('./models/db')
 const express = require('express');
-const bodyParser = require('body-parser');
+const bodyparser = require('body-parser');
 
 const expenseController = require('./controller/expenseController');
 
@@ -9,8 +9,7 @@ const app = express();
 app.use(cors());
 
 app.use(bodyparser.urlencoded({extended: false}));
-
-app.use(bodyParser.json());
+app.use(bodyparser.json());
 
 
 // API calls
