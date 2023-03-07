@@ -21,7 +21,6 @@ app.get('/', (req, res) => {
       <h3>Click here to get access to the <b><a href="/dog/alldogs">Database</a></b></h3>`);
 });
 
-
 app.use("/dog", datacontroller);
 app.listen(3002, () => console.log(`server started!`));
 

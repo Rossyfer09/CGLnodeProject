@@ -55,23 +55,10 @@ async function insertRecord(req, res){
     try{
     var dogObj = new dog();
 dogObj.Name = req.body.Name;
-dogObj.min_life_expectancy = req.body.min_life_expectancy;
-dogObj.max_life_expectancy = req.body.max_life_expectancy;
-dogObj.max_height_male = req.body.max_height_male;
-dogObj.max_height_female = req.body.max_height_female;
-dogObj.max_weight_male = req.body.max_weight_male;
-dogObj.max_weight_female = req.body.max_weight_female;
-dogObj.min_height_male = req.body.min_height_male;
-dogObj.min_height_female = req.body.min_height_female;
-dogObj.min_weight_male = req.body.min_weight_male;
-dogObj.min_weight_female = req.body.min_weight_female;
+dogObj.life_expectancy = req.body.life_expectancy;
+dogObj.max_height = req.body.max_height;
+dogObj.max_weight = req.body.max_weight;
 dogObj.good_with_children = req.body.good_with_children;
-dogObj.good_with_other_dogs = req.body.good_with_other_dogs;
-dogObj.shedding = req.body.shedding;
-dogObj.grooming = req.body.grooming;
-dogObj.drooling = req.body.drooling;
-dogObj.coat_length = req.body.coat_length;
-dogObj.good_with_strangers = req.body.good_with_strangers;
 dogObj.playfulness = req.body.playfulness;
 dogObj.protectiveness = req.body.protectiveness;
 dogObj.trainability = req.body.trainability;
