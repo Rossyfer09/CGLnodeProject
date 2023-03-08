@@ -41,7 +41,7 @@ router.get('/:id', async (req, res) => {
     });
 //___________________________________________________
 router.post('/', (req, res) =>{
-    if (!req,body._id || req.body._id == ''){
+    if (!req.body._id || req.body._id == ''){
         console.log('insert');
         insertRecord(req, res);
     } else {
@@ -50,6 +50,8 @@ router.post('/', (req, res) =>{
     }
     
 });
+
+
    
 async function insertRecord(req, res){
     try{
@@ -58,9 +60,6 @@ dogObj.Name = req.body.Name;
 dogObj.life_expectancy = req.body.life_expectancy;
 dogObj.max_height = req.body.max_height;
 dogObj.max_weight = req.body.max_weight;
-dogObj.good_with_children = req.body.good_with_children;
-dogObj.playfulness = req.body.playfulness;
-dogObj.protectiveness = req.body.protectiveness;
 dogObj.trainability = req.body.trainability;
 dogObj.energy = req.body.energy;
 dogObj.barking = req.body.barking;
@@ -81,19 +80,50 @@ dogObj.barking = req.body.barking;
 
 }
 
-async function updateRecord(req, res){
+router.put('/update/:id', async (req, res) => {
     try {
+        const id = req.params.id;
+        const updatedDog = req.body; // assuming the updated dog data is sent in the request body
 
-    const updateRecord = await dog.findOneAndUpdate(
-        {_id: req.body._id},
-        req.body);
-        res.redirect('dog/list');
-        } catch (err){
-                console.log('error during update:' + err);
-            }
+        // Find the dog record by id and update it
+        const result = await dog.findByIdAndUpdate(id, updatedDog, { new: true });
+
+        if (!result) {
+            return res.status(404).send({ message: 'Dog not found' });
         }
 
+        res.status(200).send(result);
+    } catch (err) {
+        console.error('Error updating dog:', err);
+        res.status(500).send({ message: 'Error updating dog' });
+    }
+});
 
+// async function updateRecord(req, res){
+//     try {
+
+//     const updateRecord = await dog.findOneAndUpdate(
+//         {_id: req.body._id},
+//         req.body);
+//         res.redirect('dog/list');
+//         } catch (err){
+//                 console.log('error during update:' + err);
+//             }
+//         }
+
+// function updateRecord(req, res) {
+//     dog.findOneAndUpdate(
+//         {_id: req.body._id},
+//         req.body,
+//         (err, doc) => {
+//             if (!err) {
+//                 res.redirect('dog/list');
+//             } else {
+//                 console.log('Error during update:' + err);
+//             }
+//         }
+//     )
+// }
 // function getRecord(req, res){
     
 // }
@@ -111,9 +141,6 @@ router.delete('/delete/:id', async (req, res) => {
         res.status(500).send({message:'Error retrieving dog'});
          }
         });
-// function deleteRecord(req, res){
-    
-// }
 
 
 
