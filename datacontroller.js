@@ -78,19 +78,31 @@ dogObj.barking = req.body.barking;
 
 }
 
-async function updateRecord(req, res){
-    try {
+// async function updateRecord(req, res){
+//     try {
 
-    const updateRecord = await dog.findOneAndUpdate(
+//     const updateRecord = await dog.findOneAndUpdate(
+//         {_id: req.body._id},
+//         req.body);
+//         res.redirect('dog/list');
+//         } catch (err){
+//                 console.log('error during update:' + err);
+//             }
+//         }
+
+function updateRecord(req, res) {
+    dog.findOneAndUpdate(
         {_id: req.body._id},
-        req.body);
-        res.redirect('dog/list');
-        } catch (err){
-                console.log('error during update:' + err);
+        req.body,
+        (err, doc) => {
+            if (!err) {
+                res.redirect('dog/list');
+            } else {
+                console.log('Error during update:' + err);
             }
         }
-
-
+    )
+}
 // function getRecord(req, res){
     
 // }
