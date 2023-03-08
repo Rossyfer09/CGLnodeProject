@@ -1,53 +1,14 @@
 //schema
 
 const mongoose = require('mongoose');
-var dogSchema = new mongoose.Schema({
-    
-    Name:{
-        type:String,
-        required: 'This field is required'
-    },
-    life_expectancy:{
-    type:String,
-    required: 'This field is required'
-    },
-    max_height: {
-    type:String,
-    required: 'This field is required'
-},
-  
-max_weight: {
-    type:String,
-    required: 'This field is required'
-},
-good_with_children: {
-type:String,
-required: 'This field is required'
-},
-playfulness: {
-type:String,
-required: 'This field is required'
-},
-protectiveness:{
-    type:String,
-    required: 'This field is required'
-},
-trainability: {
-    type:String,
-    required: 'This field is required'
-},
-energy:{
-type:String,
-required: 'This field is required'
-},
-barking:{
-type:String,
-required: 'This field is required'
-},
-
+const dogSchema = new mongoose.Schema({
+    Name: { type: String, required: true },
+    life_expectancy: { type: String, required: true },
+    max_height: { type: String, required: true },
+    max_weight: { type: String, required: true },
+    energy: { type: String, required: true },
+    barking: { type: String, required: true }
 },{
     versionKey: false//This is to avoid the _v being created for every record.
 });
-
-mongoose.model('dog', dogSchema);
-
+mongoose.model('dogs', dogSchema);
