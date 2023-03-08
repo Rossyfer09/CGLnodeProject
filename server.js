@@ -6,7 +6,11 @@ const datacontroller = require('./controller/datacontroller');
 
 var cors = require('cors');
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'PUT', 'POST', 'DELETE', 'UPDATE'], 
+  optionsSuccessStatus: 204
+}));
 
 app.use(bodyparser.urlencoded({extended: false}));
 app.use(bodyparser.json());
