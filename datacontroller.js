@@ -41,7 +41,7 @@ router.get('/:id', async (req, res) => {
     });
 //___________________________________________________
 router.post('/', (req, res) =>{
-    if (!req,body._id || req.body._id == ''){
+    if (!req.body._id || req.body._id == ''){
         console.log('insert');
         insertRecord(req, res);
     } else {
