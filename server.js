@@ -29,29 +29,6 @@ app.get('/', (req, res) => {
       <h3>Click here to get access to the <b><a href="/dog/alldogs">Database</a></b></h3>`);
 });
 
-// Handle POST requests to the /dog endpoint
-app.post('/dog', (req, res) => {
-  const { Name, life_expectancy, max_height, max_weight, energy, barking } = req.body;
-  // Do something with the form data
-  // ...
-  res.json({ message: 'Dog data received!' });
-});
-
-// app.put('/dog/:id', async (req, res) => {
-//   try {
-//     const updateRecord = await dog.findOneAndUpdate(
-//       { _id: req.params.id },
-//       req.body
-//     );
-//     res.status(204).send(); // send a 204 No Content response
-//   } catch (err) {
-//     console.log('error during update:', err);
-//     res.status(500).send(err.message); // send a 500 Internal Server Error response
-//   }
-// });
-
-
-
 app.use("/dog", datacontroller);
 app.listen(3002, () => console.log(`server started!`));
 
