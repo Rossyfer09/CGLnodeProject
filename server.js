@@ -29,6 +29,14 @@ app.get('/', (req, res) => {
       <h3>Click here to get access to the <b><a href="/dog/alldogs">Database</a></b></h3>`);
 });
 
+// Handle POST requests to the /dog endpoint
+app.post('/dog', (req, res) => {
+  const { Name, life_expectancy, max_height, max_weight, energy, barking } = req.body;
+  // Do something with the form data
+  // ...
+  res.json({ message: 'Dog data received!' });
+});
+
 // app.put('/dog/:id', async (req, res) => {
 //   try {
 //     const updateRecord = await dog.findOneAndUpdate(
